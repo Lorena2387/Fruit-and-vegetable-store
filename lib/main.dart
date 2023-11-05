@@ -11,14 +11,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    bool _isDark = true;
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
-          scaffoldBackgroundColor: Colors.red,
+          scaffoldBackgroundColor: _isDark ? Colors.amber : Colors.red,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: HomeScreen());
+        home: const HomeScreen());
   }
 }
