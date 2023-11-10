@@ -1,3 +1,4 @@
+import 'package:app_frutas_verduras/consts/theme_data.dart';
 import 'package:app_frutas_verduras/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,11 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        theme: ThemeData(
-          scaffoldBackgroundColor: _isDark ? Colors.amber : Colors.red,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
+        theme: Styles.themeData(true, context),
         home: const HomeScreen());
   }
 }
