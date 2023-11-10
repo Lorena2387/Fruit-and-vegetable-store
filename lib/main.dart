@@ -39,11 +39,14 @@ class _MyAppState extends State<MyApp> {
           return themeChangeProvider;
         })
       ],
-      child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
-          theme: Styles.themeData(true, context),
-          home: const HomeScreen()),
+      child:
+          Consumer<DarkThemeProvider>(builder: (context, themeProvider, child) {
+        return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Demo',
+            theme: Styles.themeData(true, context),
+            home: const HomeScreen());
+      }),
     );
   }
 }
