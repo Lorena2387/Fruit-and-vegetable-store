@@ -38,6 +38,14 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                 icon: Icon(IconlyLight.home), label: 'Home'),
             BottomNavigationBarItem(
                 icon: Icon(IconlyLight.category), label: 'categories'),
+            BottomNavigationBarItem(
+              icon: Icon(IconlyLight.buy),
+              label: 'Cart',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(IconlyLight.user2),
+              label: 'User',
+            )
           ]),
     );
   }
