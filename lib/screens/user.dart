@@ -6,12 +6,12 @@ class UserScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ListTile(
+            const ListTile(
               title: Text(
                 'Address',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -20,10 +20,33 @@ class UserScreen extends StatelessWidget {
               leading: Icon(IconlyLight.profile),
               trailing: Icon(IconlyLight.arrowRight2),
             ),
-            ListTile()
+            _listTiles(
+                title: 'Adress 2 ',
+                subtitle: 'My subtitle',
+                icon: IconlyBold.activity,
+                onPressed: () {})
           ],
         ),
       ),
+    );
+  }
+
+  Widget _listTiles(
+      {required String title,
+      String? subtitle,
+      required IconData icon,
+      required Function onPressed}) {
+    return ListTile(
+      title: Text(
+        title,
+        style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+      ),
+      subtitle: Text(subtitle!),
+      leading: Icon(icon),
+      trailing: const Icon(IconlyLight.arrowRight2),
+      onTap: () {
+        onPressed();
+      },
     );
   }
 }
