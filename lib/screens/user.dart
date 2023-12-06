@@ -22,26 +22,26 @@ class _UserScreenState extends State<UserScreen> {
             _listTiles(
                 title: 'Adress 2 ',
                 subtitle: 'My subtitle',
-                icon: IconlyBold.profile,
+                icon: IconlyLight.profile,
                 onPressed: () {}),
             _listTiles(
               title: 'Orders',
-              icon: IconlyBold.bag,
+              icon: IconlyLight.bag,
               onPressed: () {},
             ),
             _listTiles(
               title: 'Wishlist',
-              icon: IconlyBold.heart,
+              icon: IconlyLight.heart,
               onPressed: () {},
             ),
             _listTiles(
               title: 'Viewed',
-              icon: IconlyBold.show,
+              icon: IconlyLight.show,
               onPressed: () {},
             ),
             _listTiles(
               title: 'Forget password',
-              icon: IconlyBold.unlock,
+              icon: IconlyLight.unlock,
               onPressed: () {},
             ),
             SwitchListTile(
@@ -58,7 +58,7 @@ class _UserScreenState extends State<UserScreen> {
             ),
             _listTiles(
               title: 'Logout',
-              icon: IconlyBold.logout,
+              icon: IconlyLight.logout,
               onPressed: () {},
             ),
           ],
