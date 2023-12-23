@@ -1,5 +1,6 @@
 import 'package:app_frutas_verduras/provider/dark_theme_provider.dart';
 import 'package:app_frutas_verduras/widgets/text_widget.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
@@ -19,64 +20,95 @@ class _UserScreenState extends State<UserScreen> {
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              const Divider(
-                thickness: 2,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              _listTiles(
-                title: 'Adress 2 ',
-                subtitle: 'My subtitle',
-                icon: IconlyLight.profile,
-                onPressed: () {},
-                color: color,
-              ),
-              _listTiles(
-                title: 'Orders',
-                icon: IconlyLight.bag,
-                onPressed: () {},
-                color: color,
-              ),
-              _listTiles(
-                  title: 'Wishlist',
-                  icon: IconlyLight.heart,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                RichText(
+                  text: TextSpan(
+                      text: 'Hi, ',
+                      style: const TextStyle(
+                          color: Colors.cyan,
+                          fontSize: 27,
+                          fontWeight: FontWeight.bold),
+                      children: <TextSpan>[
+                        TextSpan(
+                            text: 'My name',
+                            style: TextStyle(
+                              color: color,
+                              fontSize: 25,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print('My name is pressede');
+                              }()),
+                      ]),
+                ),
+                TextWidget(
+                  text: 'Email@email.com',
+                  color: color,
+                  textSize: 18,
+                  //isTitle: true,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Divider(
+                  thickness: 2,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                _listTiles(
+                  title: 'Adress 2 ',
+                  subtitle: 'My subtitle',
+                  icon: IconlyLight.profile,
                   onPressed: () {},
-                  color: color),
-              _listTiles(
-                  title: 'Viewed',
-                  icon: IconlyLight.show,
+                  color: color,
+                ),
+                _listTiles(
+                  title: 'Orders',
+                  icon: IconlyLight.bag,
                   onPressed: () {},
-                  color: color),
-              _listTiles(
-                  title: 'Forget password',
-                  icon: IconlyLight.unlock,
-                  onPressed: () {},
-                  color: color),
-              SwitchListTile(
-                title: const Text('Theme'),
-                secondary: Icon(themeState.getDarkTheme
-                    ? Icons.dark_mode_outlined
-                    : Icons.light_mode_outlined),
-                onChanged: (bool value) {
-                  setState(() {
-                    themeState.setDarkTheme = value;
-                  });
-                },
-                value: themeState.getDarkTheme,
-              ),
-              _listTiles(
-                  title: 'Logout',
-                  icon: IconlyLight.logout,
-                  onPressed: () {},
-                  color: color),
-            ],
+                  color: color,
+                ),
+                _listTiles(
+                    title: 'Wishlist',
+                    icon: IconlyLight.heart,
+                    onPressed: () {},
+                    color: color),
+                _listTiles(
+                    title: 'Viewed',
+                    icon: IconlyLight.show,
+                    onPressed: () {},
+                    color: color),
+                _listTiles(
+                    title: 'Forget password',
+                    icon: IconlyLight.unlock,
+                    onPressed: () {},
+                    color: color),
+                SwitchListTile(
+                  title: const Text('Theme'),
+                  secondary: Icon(themeState.getDarkTheme
+                      ? Icons.dark_mode_outlined
+                      : Icons.light_mode_outlined),
+                  onChanged: (bool value) {
+                    setState(() {
+                      themeState.setDarkTheme = value;
+                    });
+                  },
+                  value: themeState.getDarkTheme,
+                ),
+                _listTiles(
+                    title: 'Logout',
+                    icon: IconlyLight.logout,
+                    onPressed: () {},
+                    color: color),
+              ],
+            ),
           ),
         ),
       ),
@@ -95,7 +127,7 @@ class _UserScreenState extends State<UserScreen> {
         text: title,
         color: color,
         textSize: 22,
-        isTitle: true,
+        //isTitle: true,
       ),
       subtitle: TextWidget(
         text: subtitle == null ? "" : subtitle,
