@@ -81,22 +81,7 @@ class _UserScreenState extends State<UserScreen> {
                   subtitle: 'My subtitle',
                   icon: IconlyLight.profile,
                   onPressed: () async {
-                    await showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            title: const Text('Update'),
-                            content: TextField(
-                              onChanged: (value) {
-                                _addressTextController.text;
-                              },
-                              controller: _addressTextController,
-                              maxLines: 5,
-                              decoration: const InputDecoration(
-                                  hintText: 'Your address'),
-                            ),
-                          );
-                        });
+                    await _showAddressDialog();
                   },
                   color: color,
                 ),
@@ -141,7 +126,9 @@ class _UserScreenState extends State<UserScreen> {
                 _listTiles(
                     title: 'Logout',
                     icon: IconlyLight.logout,
-                    onPressed: () {},
+                    onPressed: () {
+                      _showLogoutDialog();
+                    },
                     color: color),
               ],
             ),
@@ -149,6 +136,50 @@ class _UserScreenState extends State<UserScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> _showLogoutDialog() async {
+    await showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Row(
+              children: [
+                Image.asset(
+                  'asset/images/alert_sign.png',
+                  height: 20,
+                  width: 20,
+                  fit: BoxFit.fill,
+                ),
+                const Text('Sign out')
+              ],
+            ),
+          );
+        });
+  }
+
+  Future<void> _showAddressDialog() async {
+    await showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Update'),
+            content: TextField(
+              onChanged: (value) {
+                _addressTextController.text;
+              },
+              controller: _addressTextController,
+              maxLines: 5,
+              decoration: const InputDecoration(hintText: 'Your address'),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {},
+                child: const Text('Update'),
+              ),
+            ],
+          );
+        });
   }
 
   Widget _listTiles({
