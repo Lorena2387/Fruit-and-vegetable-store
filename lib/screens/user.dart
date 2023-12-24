@@ -13,6 +13,14 @@ class UserScreen extends StatefulWidget {
 }
 
 class _UserScreenState extends State<UserScreen> {
+  final TextEditingController _addressTextController =
+      TextEditingController(text: "");
+  @override
+  void dispose() {
+    _addressTextController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final themeState = Provider.of<DarkThemeProvider>(context);
@@ -26,6 +34,9 @@ class _UserScreenState extends State<UserScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const SizedBox(
+                  height: 15,
+                ),
                 RichText(
                   text: TextSpan(
                       text: 'Hi, ',
@@ -47,6 +58,9 @@ class _UserScreenState extends State<UserScreen> {
                               }()),
                       ]),
                 ),
+                const SizedBox(
+                  height: 5,
+                ),
                 TextWidget(
                   text: 'Email@email.com',
                   color: color,
@@ -66,7 +80,24 @@ class _UserScreenState extends State<UserScreen> {
                   title: 'Adress 2 ',
                   subtitle: 'My subtitle',
                   icon: IconlyLight.profile,
-                  onPressed: () {},
+                  onPressed: () async {
+                    await showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: const Text('Update'),
+                            content: TextField(
+                              onChanged: (value) {
+                                _addressTextController.text;
+                              },
+                              controller: _addressTextController,
+                              maxLines: 5,
+                              decoration: const InputDecoration(
+                                  hintText: 'Your address'),
+                            ),
+                          );
+                        });
+                  },
                   color: color,
                 ),
                 _listTiles(
@@ -91,7 +122,12 @@ class _UserScreenState extends State<UserScreen> {
                     onPressed: () {},
                     color: color),
                 SwitchListTile(
-                  title: const Text('Theme'),
+                  title: TextWidget(
+                    text: themeState.getDarkTheme ? 'Dark mode' : 'Light mode',
+                    color: color,
+                    textSize: 18,
+                    //isTitle: true,
+                  ),
                   secondary: Icon(themeState.getDarkTheme
                       ? Icons.dark_mode_outlined
                       : Icons.light_mode_outlined),
