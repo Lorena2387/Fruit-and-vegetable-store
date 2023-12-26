@@ -160,7 +160,11 @@ class _UserScreenState extends State<UserScreen> {
             content: const Text('Do you wanna sign out?'),
             actions: [
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  if (Navigator.canPop(context)) {
+                    Navigator.pop(context);
+                  }
+                },
                 child: TextWidget(
                   text: 'Cancel',
                   color: Colors.cyan,
