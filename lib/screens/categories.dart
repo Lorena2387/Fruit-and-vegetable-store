@@ -1,3 +1,4 @@
+import 'package:app_frutas_verduras/widgets/categories_widget.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -5,10 +6,8 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text('Categories screen'),
-      ),
+    return const Scaffold(
+      body: Center(child: CategoriesWidget()),
     );
   }
 }
