@@ -5,34 +5,54 @@ import 'package:provider/provider.dart';
 import '../provider/dark_theme_provider.dart';
 
 class CategoriesWidget extends StatelessWidget {
-  const CategoriesWidget({super.key});
+  const CategoriesWidget(
+      {super.key,
+      required this.catText,
+      required this.imgPath,
+      required this.color});
+  final String catText, imgPath;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
     final themeState = Provider.of<DarkThemeProvider>(context);
     double _screenWidth = MediaQuery.of(context).size.width;
     final Color color = themeState.getDarkTheme ? Colors.white : Colors.black;
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.red.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: Colors.red.withOpacity(0.7),
-          width: 2,
-        ),
-      ),
-      child: Column(
-        children: [
-          Container(
-            height: _screenWidth * 0.3,
-            width: _screenWidth * 0.3,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('asset/cat/veg.png'), fit: BoxFit.fill),
-            ),
+    return InkWell(
+      onTap: () {
+        print('category pressed');
+      },
+      child: Container(
+        //height: _screenWidth * 0.3,
+        decoration: BoxDecoration(
+          color: color.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: color.withOpacity(0.7),
+            width: 2,
           ),
-          TextWidget(text: 'Category name', color: color, textSize: 15)
-        ],
+        ),
+        child: Column(
+          children: [
+            Container(
+              height: _screenWidth * 0.3,
+              width: _screenWidth * 0.3,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(
+                      imgPath,
+                    ),
+                    fit: BoxFit.fill),
+              ),
+            ),
+            TextWidget(
+              text: catText,
+              color: color,
+              textSize: 15,
+              isTitle: true,
+            )
+          ],
+        ),
       ),
     );
   }
