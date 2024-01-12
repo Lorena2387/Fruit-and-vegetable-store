@@ -9,9 +9,9 @@ class CategoriesWidget extends StatelessWidget {
       {super.key,
       required this.catText,
       required this.imgPath,
-      required this.color});
+      required this.passedColor});
   final String catText, imgPath;
-  final Color color;
+  final Color passedColor;
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +25,10 @@ class CategoriesWidget extends StatelessWidget {
       child: Container(
         //height: _screenWidth * 0.3,
         decoration: BoxDecoration(
-          color: color.withOpacity(0.1),
+          color: passedColor.withOpacity(0.1),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: color.withOpacity(0.7),
+            color: passedColor.withOpacity(0.7),
             width: 2,
           ),
         ),
