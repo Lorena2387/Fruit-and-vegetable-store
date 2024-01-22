@@ -1,5 +1,6 @@
 import 'package:app_frutas_verduras/provider/dark_theme_provider.dart';
 import 'package:app_frutas_verduras/services/utils.dart';
+import 'package:app_frutas_verduras/widgets/on_sale_widget.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,23 +25,28 @@ class _HomeScreenState extends State<HomeScreen> {
     final themeState = utils.getTheme;
     Size size = Utils(context).getScreenSize;
     return Scaffold(
-      body: SizedBox(
-        height: size.height * 0.33,
-        child: Swiper(
-          itemBuilder: (BuildContext context, int index) {
-            return Image.asset(
-              _offreImages[index],
-              fit: BoxFit.fill,
-            );
-          },
-          autoplay: true,
-          itemCount: _offreImages.length,
-          pagination: const SwiperPagination(
-            alignment: Alignment.bottomCenter,
-            builder: DotSwiperPaginationBuilder(
-                color: Colors.white, activeColor: Colors.red),
+      body: Column(
+        children: [
+          SizedBox(
+            height: size.height * 0.33,
+            child: Swiper(
+              itemBuilder: (BuildContext context, int index) {
+                return Image.asset(
+                  _offreImages[index],
+                  fit: BoxFit.fill,
+                );
+              },
+              autoplay: true,
+              itemCount: _offreImages.length,
+              pagination: const SwiperPagination(
+                alignment: Alignment.bottomCenter,
+                builder: DotSwiperPaginationBuilder(
+                    color: Colors.white, activeColor: Colors.red),
+              ),
+            ),
           ),
-        ),
+          OnSaleWidget(),
+        ],
       ),
     );
   }
