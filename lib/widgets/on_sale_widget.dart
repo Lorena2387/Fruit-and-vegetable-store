@@ -1,5 +1,7 @@
 import 'package:app_frutas_verduras/services/utils.dart';
+import 'package:app_frutas_verduras/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 
 class OnSaleWidget extends StatefulWidget {
   const OnSaleWidget({super.key});
@@ -11,6 +13,7 @@ class OnSaleWidget extends StatefulWidget {
 class _OnSaleWidgetState extends State<OnSaleWidget> {
   @override
   Widget build(BuildContext context) {
+    final Color color = Utils(context).color;
     final theme = Utils(context).getTheme;
     Size size = Utils(context).getScreenSize;
     return Material(
@@ -28,9 +31,44 @@ class _OnSaleWidgetState extends State<OnSaleWidget> {
                 children: [
                   Image.asset(
                     'asset/images/apple.png',
-                    width: size.width * 0.22,
-                    height: size.height * 0.22,
+                    width: size.width * 0.12,
+                    height: size.height * 0.10,
                     fit: BoxFit.fill,
+                  ),
+                  Column(
+                    children: [
+                      TextWidget(
+                        text: '1KG',
+                        color: color,
+                        textSize: 22,
+                        isTitle: true,
+                      ),
+                      const SizedBox(
+                        height: 6,
+                      ),
+                      Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {},
+                            child: Icon(
+                              IconlyLight.bag2,
+                              size: 22,
+                              color: color,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              print('print heart');
+                            },
+                            child: Icon(
+                              IconlyLight.heart,
+                              size: 22,
+                              color: color,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
                   )
                 ],
               )
