@@ -45,7 +45,15 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          OnSaleWidget(),
+          SizedBox(
+            height: size.height * 0.24,
+            child: ListView.builder(
+                itemCount: 10,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return OnSaleWidget();
+                }),
+          )
         ],
       ),
     );
