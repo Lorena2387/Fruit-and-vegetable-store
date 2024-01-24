@@ -1,4 +1,5 @@
 import 'package:app_frutas_verduras/services/utils.dart';
+import 'package:app_frutas_verduras/widgets/price_widget.dart';
 import 'package:app_frutas_verduras/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
@@ -25,6 +26,7 @@ class _OnSaleWidgetState extends State<OnSaleWidget> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,11 +69,12 @@ class _OnSaleWidgetState extends State<OnSaleWidget> {
                             ),
                           ),
                         ],
-                      )
+                      ),
                     ],
                   )
                 ],
-              )
+              ),
+              const PriceWidget()
             ],
           ),
         ),
