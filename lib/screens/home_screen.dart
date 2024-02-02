@@ -1,8 +1,10 @@
 import 'package:app_frutas_verduras/provider/dark_theme_provider.dart';
 import 'package:app_frutas_verduras/services/utils.dart';
 import 'package:app_frutas_verduras/widgets/on_sale_widget.dart';
+import 'package:app_frutas_verduras/widgets/text_widget.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -45,14 +47,58 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          SizedBox(
-            height: size.height * 0.24,
-            child: ListView.builder(
-                itemCount: 10,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return OnSaleWidget();
-                }),
+          const SizedBox(
+            height: 6,
+          ),
+          TextButton(
+            onPressed: () {},
+            child: TextWidget(
+              text: 'View all',
+              maxLines: 1,
+              color: Colors.blue,
+              textSize: 20,
+            ),
+          ),
+          const SizedBox(
+            height: 6,
+          ),
+          Row(
+            children: [
+              RotatedBox(
+                quarterTurns: -1,
+                child: Row(
+                  children: [
+                    TextWidget(
+                      text: 'On sale'.toUpperCase(),
+                      color: Colors.orange,
+                      textSize: 22,
+                      isTitle: true,
+                    ),
+                    const Icon(
+                      IconlyLight.discount,
+                      color: Colors.orange,
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                width: 8,
+              ),
+              Flexible(
+                child: SizedBox(
+                  height: size.height * 0.24,
+                  child: ListView.builder(
+                      itemCount: 10,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return const OnSaleWidget();
+                      }),
+                ),
+              ),
+            ],
           )
         ],
       ),
