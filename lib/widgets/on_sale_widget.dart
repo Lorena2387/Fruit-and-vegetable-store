@@ -1,6 +1,7 @@
 import 'package:app_frutas_verduras/services/utils.dart';
 import 'package:app_frutas_verduras/widgets/price_widget.dart';
 import 'package:app_frutas_verduras/widgets/text_widget.dart';
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
@@ -33,6 +34,13 @@ class _OnSaleWidgetState extends State<OnSaleWidget> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    //FancyShimmerImage(
+                    //imageUrl:
+                    //'https://www.freepik.es/vector-gratis/diseno-vectores-coloridos-manzana_38655651.htm#query=manzanas&position=0&from_view=keyword&track=sph&uuid=d32df9c7-8d63-4f68-ade7-b4639388ac8a',
+                    //height: size.width * 0.22,
+                    //width: size.width * 0.22,
+                    //boxFit: BoxFit.fill,
+                    //),
                     Image.asset(
                       'asset/images/apple.png',
                       width: size.width * 0.12,
