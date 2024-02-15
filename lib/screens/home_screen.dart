@@ -1,5 +1,6 @@
 import 'package:app_frutas_verduras/provider/dark_theme_provider.dart';
 import 'package:app_frutas_verduras/services/utils.dart';
+import 'package:app_frutas_verduras/widgets/feed_items.dart';
 import 'package:app_frutas_verduras/widgets/on_sale_widget.dart';
 import 'package:app_frutas_verduras/widgets/text_widget.dart';
 import 'package:card_swiper/card_swiper.dart';
@@ -127,7 +128,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-          )
+          ),
+          FeedsWidget()
         ],
       ),
     );
