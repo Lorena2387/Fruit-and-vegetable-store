@@ -1,4 +1,5 @@
 import 'package:app_frutas_verduras/services/utils.dart';
+import 'package:app_frutas_verduras/widgets/heart_btn.dart';
 import 'package:app_frutas_verduras/widgets/price_widget.dart';
 import 'package:app_frutas_verduras/widgets/text_widget.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
@@ -68,16 +69,7 @@ class _OnSaleWidgetState extends State<OnSaleWidget> {
                                 color: color,
                               ),
                             ),
-                            GestureDetector(
-                              onTap: () {
-                                print('print heart');
-                              },
-                              child: Icon(
-                                IconlyLight.heart,
-                                size: 22,
-                                color: color,
-                              ),
-                            ),
+                            HeartBtn()
                           ],
                         ),
                       ],
