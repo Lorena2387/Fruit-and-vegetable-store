@@ -27,11 +27,12 @@ class _FeedsWidgetState extends State<FeedsWidget> {
           borderRadius: BorderRadius.circular(12),
           child: Column(
             children: [
-              Image.asset(
-                'asset/images/apple.png',
-                width: size.width * 0.12,
-                height: size.height * 0.10,
-                fit: BoxFit.fill,
+              FancyShimmerImage(
+                imageUrl:
+                    'https://www.freepik.es/vector-gratis/diseno-vectores-coloridos-manzana_38655651.htm#query=manzanas&position=0&from_view=keyword&track=sph&uuid=d32df9c7-8d63-4f68-ade7-b4639388ac8a',
+                height: size.width * 0.22,
+                width: size.width * 0.22,
+                boxFit: BoxFit.fill,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
