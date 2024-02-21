@@ -4,6 +4,7 @@ import 'package:app_frutas_verduras/widgets/price_widget.dart';
 import 'package:app_frutas_verduras/widgets/text_widget.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class FeedsWidget extends StatefulWidget {
   const FeedsWidget({super.key});
@@ -15,59 +16,125 @@ class FeedsWidget extends StatefulWidget {
 class _FeedsWidgetState extends State<FeedsWidget> {
   @override
   Widget build(BuildContext context) {
+    final _quantityTextController = TextEditingController();
+    @override
+    void initState() {
+      _quantityTextController.text = '1';
+      super.initState();
+    }
+
+    @override
+    void dispose() {
+      _quantityTextController.dispose();
+      super.dispose();
+    }
+
     final Color color = Utils(context).color;
     Size size = Utils(context).getScreenSize;
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Material(
-        borderRadius: BorderRadius.circular(12),
-        color: Theme.of(context).cardColor,
-        child: InkWell(
-          onTap: () {},
-          borderRadius: BorderRadius.circular(12),
-          child: Column(
-            children: [
-              FancyShimmerImage(
-                imageUrl:
-                    'https://www.freepik.es/vector-gratis/diseno-vectores-coloridos-manzana_38655651.htm#query=manzanas&position=0&from_view=keyword&track=sph&uuid=d32df9c7-8d63-4f68-ade7-b4639388ac8a',
-                height: size.width * 0.22,
-                width: size.width * 0.22,
-                boxFit: BoxFit.fill,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return SingleChildScrollView(
+      child: Container(
+        width: 250,
+        height: 250,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Material(
+            borderRadius: BorderRadius.circular(12),
+            color: Theme.of(context).cardColor,
+            child: InkWell(
+              onTap: () {},
+              borderRadius: BorderRadius.circular(12),
+              child: Column(
                 children: [
-                  TextWidget(
-                    text: 'Title',
-                    color: color,
-                    textSize: 8,
-                    isTitle: true,
+                  Image.asset(
+                    'asset/images/apple.png',
+                    width: size.width * 0.12,
+                    height: size.height * 0.10,
+                    fit: BoxFit.fill,
                   ),
-                  const HeartBtn()
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextWidget(
+                          text: 'Title',
+                          color: color,
+                          textSize: 20,
+                          isTitle: true,
+                        ),
+                        const HeartBtn()
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const PriceWidget(),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Flexible(
+                          child: Row(
+                            children: [
+                              FittedBox(
+                                child: TextWidget(
+                                  text: 'KG',
+                                  color: color,
+                                  textSize: 18,
+                                  isTitle: true,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Flexible(
+                                  child: TextFormField(
+                                controller: _quantityTextController,
+                                key: const ValueKey('10'),
+                                style: TextStyle(color: color, fontSize: 18),
+                                keyboardType: TextInputType.number,
+                                maxLines: 1,
+                                enabled: true,
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp('[0-9]')),
+                                ],
+                              ))
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const Spacer(),
+                  TextButton(
+                    onPressed: () {},
+                    child: TextWidget(
+                      text: 'Add to card',
+                      maxLines: 1,
+                      color: color,
+                      textSize: 18,
+                    ),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                          Theme.of(context).cardColor),
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(12.0),
+                              bottomRight: Radius.circular(12.0)),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const PriceWidget(),
-                    Row(
-                      children: [
-                        Flexible(
-                            child: FittedBox(
-                                child: TextWidget(
-                          text: 'KG',
-                          color: color,
-                          textSize: 18,
-                          isTitle: true,
-                        )))
-                      ],
-                    )
-                  ],
-                ),
-              )
-            ],
+            ),
           ),
         ),
       ),
