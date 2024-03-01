@@ -33,8 +33,8 @@ class _FeedsWidgetState extends State<FeedsWidget> {
     Size size = Utils(context).getScreenSize;
     return SingleChildScrollView(
       child: Container(
-        width: 250,
-        height: 250,
+        width: 400,
+        height: 400,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Material(
@@ -73,11 +73,14 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        PriceWidget(
-                          salePrice: 2.99,
-                          price: 5.9,
-                          textPrice: _quantityTextController.text,
-                          isOnSale: true,
+                        Flexible(
+                          flex: 4,
+                          child: PriceWidget(
+                            salePrice: 2.99,
+                            price: 5.9,
+                            textPrice: '2',
+                            isOnSale: true,
+                          ),
                         ),
                         const SizedBox(
                           width: 8,
@@ -97,18 +100,23 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                 width: 5,
                               ),
                               Flexible(
+                                  flex: 2,
                                   child: TextFormField(
-                                controller: _quantityTextController,
-                                key: const ValueKey('10'),
-                                style: TextStyle(color: color, fontSize: 18),
-                                keyboardType: TextInputType.number,
-                                maxLines: 1,
-                                enabled: true,
-                                inputFormatters: [
-                                  FilteringTextInputFormatter.allow(
-                                      RegExp('[0-9]')),
-                                ],
-                              ))
+                                    controller: _quantityTextController,
+                                    key: const ValueKey('10'),
+                                    style:
+                                        TextStyle(color: color, fontSize: 18),
+                                    keyboardType: TextInputType.number,
+                                    maxLines: 1,
+                                    enabled: true,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.allow(
+                                          RegExp('[0-9]')),
+                                    ],
+                                  ))
                             ],
                           ),
                         )
