@@ -1,4 +1,6 @@
+import 'package:app_frutas_verduras/inner_screen/on_sale_screen.dart';
 import 'package:app_frutas_verduras/provider/dark_theme_provider.dart';
+import 'package:app_frutas_verduras/services/global_methods.dart';
 import 'package:app_frutas_verduras/services/utils.dart';
 import 'package:app_frutas_verduras/widgets/feed_items.dart';
 import 'package:app_frutas_verduras/widgets/on_sale_widget.dart';
@@ -28,6 +30,8 @@ class _HomeScreenState extends State<HomeScreen> {
     final Utils utils = Utils(context);
     final themeState = utils.getTheme;
     Size size = Utils(context).getScreenSize;
+    GlobalMethods globalMethods = GlobalMethods();
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -54,7 +58,10 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 6,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                globalMethods.navigateTo(
+                    ctx: context, routeName: OnSaleScreen.routeName);
+              },
               child: TextWidget(
                 text: 'View all',
                 maxLines: 1,

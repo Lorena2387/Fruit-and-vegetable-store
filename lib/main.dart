@@ -1,4 +1,5 @@
 import 'package:app_frutas_verduras/consts/theme_data.dart';
+import 'package:app_frutas_verduras/inner_screen/on_sale_screen.dart';
 import 'package:app_frutas_verduras/provider/dark_theme_provider.dart';
 import 'package:app_frutas_verduras/screens/btm_bar_screen.dart';
 //import 'package:app_frutas_verduras/screens/home_screen.dart';
@@ -43,10 +44,12 @@ class _MyAppState extends State<MyApp> {
       child:
           Consumer<DarkThemeProvider>(builder: (context, themeProvider, child) {
         return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Flutter Demo',
-            theme: Styles.themeData(themeProvider.getDarkTheme, context),
-            home: const BottomBarScreen());
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          theme: Styles.themeData(themeProvider.getDarkTheme, context),
+          home: const BottomBarScreen(),
+          routes: {OnSaleScreen.routeName: (context) => const OnSaleScreen()},
+        );
       }),
     );
   }
