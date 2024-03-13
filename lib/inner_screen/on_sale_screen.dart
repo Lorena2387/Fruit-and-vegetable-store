@@ -10,6 +10,7 @@ class OnSaleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool _isEmpty = true;
     Size size = Utils(context).getScreenSize;
     final Color color = Utils(context).color;
     return Scaffold(
@@ -33,15 +34,35 @@ class OnSaleScreen extends StatelessWidget {
           isTitle: true,
         ),
       ),
-      body: GridView.count(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          crossAxisCount: 2,
-          //crossAxisSpacing: 10,
-          childAspectRatio: size.width / (size.width * 0.75),
-          children: List.generate(16, (index) {
-            return const OnSaleWidget();
-          })),
+      body: _isEmpty
+          ? Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Image.asset('asset/offres/box.png'),
+                    Text(
+                      'No products on sale yet!, \nStay tuned',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: color,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+          : GridView.count(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              crossAxisCount: 2,
+              //crossAxisSpacing: 10,
+              childAspectRatio: size.width / (size.width * 0.75),
+              children: List.generate(16, (index) {
+                return const OnSaleWidget();
+              })),
     );
   }
 }
