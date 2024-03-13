@@ -40,7 +40,10 @@ class OnSaleScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    Image.asset('asset/offres/box.png'),
+                    Padding(
+                      padding: const EdgeInsets.all(18.0),
+                      child: Image.asset('asset/offres/box.png'),
+                    ),
                     Text(
                       'No products on sale yet!, \nStay tuned',
                       textAlign: TextAlign.center,
